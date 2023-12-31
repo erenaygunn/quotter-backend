@@ -9,7 +9,9 @@ const allowedOrigin = [
 ]
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://quotterr.netlify.app/"
+}));
 
 
 

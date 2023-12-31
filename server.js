@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 const allowedOrigin = [
-  'https://quotter-backend.onrender.com'
+  'https://quotterr.netlify.app/'
 ]
 
 const corsOptions = {

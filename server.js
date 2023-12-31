@@ -4,8 +4,12 @@ const cors = require('cors');
 
 const app = express();
 
+const corsOptions = {
+  origin: 'https://your-frontend-domain.com',
+};
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 
 
@@ -88,7 +92,7 @@ app.post('/api/quotes/like', async (req, res) => {
   }
 });
 
-
+const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
 const uri = "mongodb+srv://eaygun178:eAQloZfTR2zF8xMf@cluster0.4czqwrj.mongodb.net/quotter?retryWrites=true&w=majority";
@@ -96,7 +100,7 @@ mongoose.set("strictQuery", false)
 mongoose.connect(uri)
 .then(() => {
     console.log('connected to MongoDB')
-    app.listen(3000, ()=> {
+    app.listen(PORT, ()=> {
         console.log(`Node API app is running on port 3000`)
     });
 }).catch((error) => {

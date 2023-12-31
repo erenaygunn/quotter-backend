@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-  origin: 'https://your-frontend-domain.com',
+  origin: 'https://quotterr.netlify.app/',
 };
 
 app.use(express.json());

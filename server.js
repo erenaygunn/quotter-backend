@@ -4,8 +4,18 @@ const cors = require('cors');
 
 const app = express();
 
+const allowedOrigin = [
+  'https://quotter-backend.onrender.com'
+]
+
 const corsOptions = {
-  origin: 'https://quotterr.netlify.app/',
+  origin: (origin, callback) => {
+    if(allowedOrigin.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  }
 };
 
 app.use(express.json());

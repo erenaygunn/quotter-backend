@@ -101,7 +101,7 @@ app.post('/api/quotes/like', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
-const uri = "mongodb+srv://eaygun178:eAQloZfTR2zF8xMf@cluster0.4czqwrj.mongodb.net/quotter?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 mongoose.set("strictQuery", false)
 mongoose.connect(uri)
 .then(() => {

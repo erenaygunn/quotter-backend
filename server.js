@@ -50,7 +50,7 @@ app.post('/api/quotes', async (req, res) => {
   try {
     // Set the date to the current date
     const currentDate = new Date();
-    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'};
     const formattedDate = currentDate.toLocaleDateString('en-GB', options);
 
     const newQuote = new Quote({ quote, author, likes, userName, email, date: formattedDate });

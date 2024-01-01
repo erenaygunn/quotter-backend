@@ -7,7 +7,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", 'https://quotterr.netlify.app');
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization")
   next();
 })
 

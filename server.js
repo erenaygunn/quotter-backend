@@ -1,24 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 
 const app = express();
-
-const allowedOrigin = [
-  'https://quotterr.netlify.app/'
-]
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if(allowedOrigin.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error("Not allowed by CORS"))
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200
-};
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -27,8 +10,6 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 })
-
-
 
 // Create a Quote schema
 const quoteSchema = mongoose.Schema({
@@ -69,7 +50,8 @@ app.post('/api/quotes', async (req, res) => {
   try {
     // Set the date to the current date
     const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString();
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const formattedDate = currentDate.toLocaleDateString('en-GB', options);
 
     const newQuote = new Quote({ quote, author, likes, userName, email, date: formattedDate });
     await newQuote.save();
